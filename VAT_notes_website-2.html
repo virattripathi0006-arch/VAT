@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VAT — Notes & PDFs</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#f6f7fb;color:#111827}
+header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:10}
+.nav{max-width:1100px;margin:auto;padding:18px 22px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:28px;font-weight:900;letter-spacing:-1px}
+.logo span{color:#635bff}
+nav a{margin-left:22px;text-decoration:none;color:#4b5563;font-weight:600}
+.hero{max-width:1100px;margin:auto;padding:80px 22px 55px;text-align:center}
+.badge{display:inline-block;background:#eeecff;color:#554bd8;padding:8px 14px;border-radius:999px;font-size:13px;font-weight:800;margin-bottom:18px}
+h1{font-size:clamp(42px,7vw,72px);letter-spacing:-3px;line-height:1.02}
+.hero p{max-width:620px;margin:20px auto 30px;color:#6b7280;font-size:18px;line-height:1.6}
+.search{max-width:620px;margin:auto;display:flex;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:7px;box-shadow:0 12px 35px #11182710}
+.search input{flex:1;border:0;outline:0;padding:13px;font-size:15px}
+.search button{border:0;background:#111827;color:#fff;padding:0 22px;border-radius:11px;font-weight:700}
+section{max-width:1100px;margin:auto;padding:25px 22px 70px}
+.title{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px}
+.title h2{font-size:28px}
+.title p{color:#6b7280}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:25px;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 15px 35px #11182712}
+.icon{width:48px;height:48px;border-radius:14px;background:#eeecff;color:#554bd8;display:grid;place-items:center;font-weight:900;margin-bottom:18px}
+.card h3{font-size:19px;margin-bottom:7px}
+.card p{color:#6b7280;font-size:14px}
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.note{background:#111827;color:#fff;border-radius:20px;padding:25px}
+.note small{color:#aeb5c2}
+.note h3{margin:10px 0 18px}
+.note button{width:100%;padding:12px;border:0;border-radius:10px;background:#fff;color:#111827;font-weight:800}
+footer{text-align:center;padding:35px;color:#6b7280;border-top:1px solid #e5e7eb;background:#fff}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.notes{grid-template-columns:1fr}nav a{display:none}}
+@media(max-width:480px){.grid{grid-template-columns:1fr 1fr}.hero{padding-top:55px}h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="logo">V<span>A</span>T</div>
+    <nav><a href="#classes">Classes</a><a href="#notes">Notes</a></nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="badge">NOTES • PDF • STUDY</div>
+  <h1>Study smarter with <span style="color:#635bff">VAT.</span></h1>
+  <p>Clean, organized study notes and PDFs — made simple for students.</p>
+  <div class="search">
+    <input id="search" placeholder="Search notes, subjects or classes...">
+    <button onclick="searchNotes()">Search</button>
+  </div>
+</section>
+
+<section id="classes">
+  <div class="title"><div><h2>Choose your class</h2><p>Find study material quickly.</p></div></div>
+  <div class="grid">
+    <div class="card"><div class="icon">09</div><h3>Class 9</h3><p>Notes & study material</p></div>
+    <div class="card"><div class="icon">10</div><h3>Class 10</h3><p>Notes & study material</p></div>
+    <div class="card"><div class="icon">11</div><h3>Class 11</h3><p>Notes & study material</p></div>
+    <div class="card"><div class="icon">12</div><h3>Class 12</h3><p>Notes & study material</p></div>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="title"><div><h2>Latest notes</h2><p>Sample PDFs — replace these with your own files.</p></div></div>
+  <div class="notes">
+    <div class="note" data-key="class 11 physics physics"><small>CLASS 11 • PHYSICS</small><h3>Physics Notes</h3><button onclick="alert('Add your PDF link here.')">View PDF</button></div>
+    <div class="note" data-key="class 11 maths mathematics maths"><small>CLASS 11 • MATHS</small><h3>Mathematics Notes</h3><button onclick="alert('Add your PDF link here.')">View PDF</button></div>
+    <div class="note" data-key="class 12 chemistry chemistry"><small>CLASS 12 • CHEMISTRY</small><h3>Chemistry Notes</h3><button onclick="alert('Add your PDF link here.')">View PDF</button></div>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 VAT — Notes & PDFs</footer>
+
+<script>
+function searchNotes(){
+  const q=document.getElementById('search').value.toLowerCase().trim();
+  const cards=document.querySelectorAll('.note');
+  cards.forEach(c=>c.style.display=(!q||c.dataset.key.includes(q))?'block':'none');
+  document.getElementById('notes').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
